@@ -23,9 +23,9 @@ namespace FullStackAuth_WebAPI.Controllers
             _context = context;
         }
 
-        //Post: Api/Reviews
+        //Post:Api/reviews
         [HttpPost, Authorize]
-        public IActionResult Post([FromBody]Review data)
+        public IActionResult Post([FromBody] Review data)
         {
             try
             {     // Retrieve the authenticated user's ID from the JWT token  
@@ -37,7 +37,6 @@ namespace FullStackAuth_WebAPI.Controllers
                     return Unauthorized();
 
                 }
-
                 // Set the car's owner ID  the authenticated user's ID we found earlier             
                 data.UserId=userId;
 
@@ -52,22 +51,32 @@ namespace FullStackAuth_WebAPI.Controllers
 
                 // Return the newly created car as a 201 created response
                 return StatusCode(201, data);
-
-
             }
             
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
-            
 
+        }
+
+        [HttpGet("id"),Authorize]
+        public IActionResult GetReview(int id)
+        {
+            var review = _context.Reviews.Find(id);
+
+            if(review == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(review);
         }
 
 
 
-    }
 
-        
+    }
+       
 }
 
