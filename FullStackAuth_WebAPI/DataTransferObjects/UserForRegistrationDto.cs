@@ -4,7 +4,7 @@ namespace FullStackAuth_WebAPI.DataTransferObjects
 {
     public class UserForRegistrationDto
     {
-        //DTO used when registering
+       
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Required(ErrorMessage = "Username is required.")]

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
+
 namespace FullStackAuth_WebAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -25,7 +26,7 @@ namespace FullStackAuth_WebAPI.Controllers
             _context = context;
         }
 
-        // Get api/favoritesUsers Favorites
+        // Get api/favorites
         [HttpGet, Authorize]
         public IActionResult GetUsersFavorites()
         {
